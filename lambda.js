@@ -12,9 +12,11 @@ const handle = serverless(app, {
 
 const handler = async (event, context, callback) => {
     const request = event.Records[0].cf.request;
+    console.log('request: ', request)
 
 
     if ((!path.extname(request.uri)) || (request.uri === '/index.html')) {
+        console.log(`${request.uri} directly served from S3`)
         const response = await handle(event, context);
         let minified = minify(response.body, {
             caseSensitive: true,

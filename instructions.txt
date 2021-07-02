@@ -3,7 +3,7 @@
     - aws account
     - aws cli configure
     - serverless framework installed
-    
+
 - install ng add @nguniversal/express-engine
 - add serverless.ts (to keep things clean)
 - add serverless in angular.json (to keep things clean)
@@ -15,11 +15,11 @@
     "build:sls": "ng build --prod && ng run angular-lambda-ssr:serverless:production"
 - deploy serverless distribution:
     serverless deploy --config serverless-distribution.yml
-- replace the url in search.servicee with the cloudfront endpoint
+- replace the url in search.service with the cloudfront endpoint
 - build:
     yarn build:sls
 - upload dist to s3:
-      aws s3 sync . s3://eelayoubi-ssr-test --profile A4L-MASTER
+    aws s3 sync dist/angular-lambda-ssr s3://tony-ssr-test
 - deploy lambda stack
     serverless deploy
 - attach lambda to cloudfront origin request
@@ -27,7 +27,6 @@
 # cleanup
 - empty the bucket that contains the dist (if not empty, cannot be deleted)
 - delete distribution stack:
-     serverless remove --config serverless-distribution.yml
+    serverless remove --config serverless-distribution.yml
 - wait for a while then delete lambda stack
     serverless remove
-    
