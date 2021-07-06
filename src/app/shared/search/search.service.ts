@@ -12,7 +12,7 @@ export class SearchService {
   constructor(private http: HttpClient, @Inject(PLATFORM_ID) readonly platformId: Object) { }
 
   getAll() {
-    return this.http.get('/assets/data/animals.json');
+    return this.http.get('https://d1fcq9ub1z2otl.cloudfront.net/assets/data/animals.json');
   }
 
   search(q: string): Observable<Animal[]> {
